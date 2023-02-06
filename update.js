@@ -80,57 +80,72 @@ function pencet(e) {
         if (lampu[e].lampu === "off") {
             // mengubah data menjadi nyala
             lampu[e].lampu = "on";
+
             // disable tombol nyala
             tombol6.disabled = true;
             lampu[e].status = "Mati";
+
             // cek ruangan kamar
             if (lampu[0].lampu === "on")
                 ruangan.checked = true;
         } else if (lampu[e].lampu === "on") {
             // mengubah data menjadi mati
             lampu[e].lampu = "off";
+
             // disable tombol mati
             tombol6.disabled = true;
             lampu[e].status = "Nyala";
+
             // tombol ruangan
             ruangan.checked = false;
         }
+
         // enable tombol sebaliknya
         let tombol6Switch = document.getElementById(`tombol${lampu[e].status}${lampu[e].id}`);
         tombol6Switch.disabled = false;
+
         // eksekusi gambar
         nyala.src = `${pathGambar}${lampu[e].lampu}.gif`;
+
     } else if (lampu[e].id === 10) {
         if (parseInt(tombol.value) === 1) {
             // mengubah data menjadi nyala
             lampu[e].lampu = "on";
             ruangan.checked = true;
+
         } else {
             // mengubah data menjadi mati
             lampu[e].lampu = "off";
             ruangan.checked = false;
         }
+
         // eksekusi gambar
         nyala.src = `${pathGambar}${lampu[e].lampu}.gif`;
+
     } else {
         // lampu ruang kamar 1, tamu, keluarga
         if (tombol.checked) {
             // mengubah data menjadi nyala
             lampu[e].lampu = "on";
             lampu[e].status = "Nyala";
+
             // cek ruangan
             let kelompok = lampu.filter(x => x.ruang == lampu[e].ruang);
+
             if (kelompok.every(y => y.lampu == "on")) {
                 ruangan.checked = true;
             }
+
         } else {
             // mengubah data menjadi mati
             lampu[e].lampu = "off";
             lampu[e].status = "Mati";
             ruangan.checked = false;
         }
+
         // eksekusi gambar
         nyala.src = `${pathGambar}${lampu[e].lampu}.gif`;
+
         // eksekusi label
         status.innerText = lampu[e].status;
     }
@@ -140,6 +155,7 @@ function pencet(e) {
 function pencet2(f) {
     // tombol ruangan
     let tombolRuangan = document.getElementById(f);
+
     // filter data berdasarkan ruangan
     let kelompok = lampu.filter(g => g.ruang == f);
 
@@ -157,27 +173,36 @@ function pencet2(f) {
                 let tombol6 = document.getElementById(`tombol${kelompok[i].status}${kelompok[i].id}`);
                 kelompok[i].lampu = "on";
                 kelompok[i].status = "Mati";
+
                 // eksekusi gambar
                 nyala.src = `${pathGambar}${kelompok[i].lampu}.gif`;
+
                 // tombol nyala disabled
                 tombol6.checked = true;
                 tombol6.disabled = true;
+
                 // tombol mati aktifkan
                 tombol6Switch = document.getElementById(`tombol${kelompok[i].status}${kelompok[i].id}`);
                 tombol6Switch.disabled = false;
+
             } else if (kelompok[i].id === 10) {
                 kelompok[i].lampu = "on";
+
                 // eksekusi gambar
                 nyala.src = `${pathGambar}${kelompok[i].lampu}.gif`;
+
                 // mengganti label
                 tombol.value = 1;
             } else {
                 kelompok[i].lampu = "on";
                 kelompok[i].status = "Nyala";
+
                 // eksekusi gambar
                 nyala.src = `${pathGambar}${kelompok[i].lampu}.gif`;
+
                 // eksekusi label
                 status.innerText = kelompok[i].status;
+
                 // eksekusi tombol
                 tombol.checked = true;
             }
@@ -195,27 +220,36 @@ function pencet2(f) {
                 let tombol6 = document.getElementById(`tombol${kelompok[i].status}${kelompok[i].id}`);
                 kelompok[i].lampu = "off";
                 kelompok[i].status = "Nyala";
+
                 // eksekusi gambar
                 nyala.src = `${pathGambar}${kelompok[i].lampu}.gif`;
+
                 // tombol mati disabled
                 tombol6.checked = true;
                 tombol6.disabled = true;
+
                 // tombol nyala aktifkan
                 tombol6Switch = document.getElementById(`tombol${kelompok[i].status}${kelompok[i].id}`);
                 tombol6Switch.disabled = false;
+
             } else if (kelompok[i].id === 10) {
                 kelompok[i].lampu = "off";
+
                 // eksekusi gambar
                 nyala.src = `${pathGambar}${kelompok[i].lampu}.gif`;
+
                 // mengganti label
                 tombol.value = 0;
             } else {
                 kelompok[i].lampu = "off";
                 kelompok[i].status = "Mati";
+
                 // eksekusi gambar
                 nyala.src = `${pathGambar}${kelompok[i].lampu}.gif`;
+
                 // eksekusi label
                 status.innerText = kelompok[i].status;
+                
                 // eksekusi tombol
                 tombol.checked = false;
             }
