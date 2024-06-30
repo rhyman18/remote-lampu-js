@@ -7,4 +7,3 @@ Remote Lampu JS is a JavaScript-based web application designed to control remote
 
 # Technologies Used
 - Frontend: HTML, CSS, JavaScript
-- Backend: Node.js
